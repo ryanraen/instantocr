@@ -19,4 +19,6 @@ Recognizing the limitations of my current skill and knowledge, I will begin with
 
 ## User Stories
 
-- As a user, I want to be able to upload an image from my computer using its file path
+- As a user, I want to be able to upload an image from my computer using its file path and store it as a new image conversion instance
+- As a user, I want to be able to view a list of the image conversions that I have executed
+- As a user, I want to be able to select a certain image conversion and retrieve the image file path and extracted text from that instance
