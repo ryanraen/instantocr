@@ -19,6 +19,7 @@ Recognizing the limitations of my current skill and knowledge, I will begin with
 
 ## User Stories
 
-- As a user, I want to be able to upload an image from my computer using its file path and store it as a new image conversion instance
-- As a user, I want to be able to view a list of the image conversions that I have executed
-- As a user, I want to be able to select a certain image conversion and retrieve the image file path and extracted text from that instance
+- As a user, I want to be able to upload an image from my computer using its file path and store it as a new image conversion instance within my conversion history.
+- As a user, I want to have the application recognize and gather plain text from within the image so that I can extract the text in a usuable format.
+- As a user, I want to be able to view a list of the image conversions that I have executed previously, so I can keep track of all the images I’ve processed.
+- As a user, I want to be able to select a certain image conversion and retrieve the image's file path and the extracted text from that instance.
