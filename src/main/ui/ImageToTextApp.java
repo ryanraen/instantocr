@@ -29,10 +29,10 @@ public class ImageToTextApp {
         // stub
     }
 
-    // REQUIRES: path must be a valid file path to an image on the user device
     // MODIFIES: this
-    // EFFECTS: stores file path in the ImageConversion instance and reads it as an image
-    private void uploadImage(String path) {
+    // EFFECTS: prompts user for image file path,
+    // stores file path in the ImageConversion instance and reads it as an image
+    private void uploadImage() {
         // stub
     }
 
