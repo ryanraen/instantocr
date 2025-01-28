@@ -1,5 +1,7 @@
 package ui;
 
+import model.ImageConversion;
+
 // Image to text conversion application with 
 // a conversion instance and conversion history
 public class ImageToTextApp {
@@ -10,14 +12,14 @@ public class ImageToTextApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user input
-    private void processInput() {
+    // EFFECTS: initializes conversion instance and conversion history
+    private void init() {
         // stub
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes conversion instance and conversion history
-    private void init() {
+    // EFFECTS: processes user input
+    private void processInput() {
         // stub
     }
 
