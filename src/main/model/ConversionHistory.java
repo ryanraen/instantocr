@@ -6,7 +6,6 @@ import java.util.List;
 // Represents a list of previous image conversion instances
 public class ConversionHistory {
 
-    // MODIFIES: this
     // EFFECTS: initializes list of previous converions
     public ConversionHistory() {
         // stub
