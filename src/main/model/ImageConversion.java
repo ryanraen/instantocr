@@ -7,7 +7,6 @@ import java.awt.image.BufferedImage;
 // a list of character templates, and the extracted text
 public class ImageConversion {
 
-    // MODIFIES: this
     // EFFECTS: initializes filePath, extractedText as empty Strings,
     // initializes image as null, and initializes character template list
     public ImageConversion() {
