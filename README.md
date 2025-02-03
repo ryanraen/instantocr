@@ -2,7 +2,7 @@
 
 ## What does it do?
 
-This application will extract text from images containing plain text using simple *Optical Character Recognition* (OCR) logic. Users can upload an image and copy the extracted text to use it elsewhere without manually typing it out.
+This application will extract text from images containing plain text using simple *Optical Character Recognition* (OCR) logic. In its full form, users would be able to upload an image and copy the extracted text to use it elsewhere without manually typing it out. Within the confines of CPSC 210 term project restrictions, the user will be able to select a demo image from a set of pre-defined image files within the project data and continue the conversion process with it.
 
 ## Who will use it?
 
@@ -19,7 +19,8 @@ Recognizing the limitations of my current skill and knowledge, I will begin with
 
 ## User Stories
 
-- As a user, I want to be able to upload an image from my computer using its file path and store it as a new image conversion instance within my conversion history.
+- As a user, I want to be able to select an image from a predefined set of images files stored within the project data and add it as a new image conversion instance within my conversion history.
 - As a user, I want to have the application recognize and gather plain text from within the image so that I can extract the text in a usuable format.
 - As a user, I want to be able to view a list of the image conversions that I have executed previously, so I can keep track of all the images I’ve processed.
+- As a user, I want to be able to remove an image conversion from my conversion history.
 - As a user, I want to be able to select a certain image conversion and retrieve the image's file path and the extracted text from that instance.
