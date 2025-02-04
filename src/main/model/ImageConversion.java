@@ -54,7 +54,7 @@ public class ImageConversion {
         // stub
     }
 
-    // REQUIRES: there must be >= 1 pixel of white margin between text characters in image
+    // REQUIRES: there must be >= 1 pixel of white margin between adjacent text characters in the image
     // MODIFIES: this
     // EFFECTS: slices image into a list of sub-images containing 1 text character each
     private void sliceImage() {
