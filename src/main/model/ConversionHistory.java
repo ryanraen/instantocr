@@ -15,6 +15,11 @@ public class ConversionHistory {
         return null; // stub
     }
 
+    // EFFECTS: adds the given conversion to the conversion history
+    public void addConversion(ImageConversion conversion) {
+        // stub
+    }
+
     // REQUIRES: conversions must contain an ImageConversion instance with specified file path
     // EFFECTS: retrieves the least recent conversion instance that has the given file path
     public ImageConversion getByFilePath(String filePath) {
