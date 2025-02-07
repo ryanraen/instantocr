@@ -46,6 +46,14 @@ public class ImageConversion {
         return null; // stub
     }
 
+    // REQUIRES: this image conversion instance must have an existing
+    // stored valid filePath
+    // MODIFIES: this
+    // EFFECTS: reads the image at filePath and stores it in imageMat
+    public void readImage() {
+        // stub
+    }
+
     // REQURES: path must be a valid file path to an image in data/images
     // MODIFIES: this
     // EFFECTS: stores path as filePath, reads the image at path,
