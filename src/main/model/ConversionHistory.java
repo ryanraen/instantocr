@@ -36,7 +36,7 @@ public class ConversionHistory {
 
     // MODIFIES: this
     // EFFECTS: clears conversion history
-    public void clearHistory() {
+    public void clear() {
         // stub
     }
 
