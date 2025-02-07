@@ -16,6 +16,12 @@ public class ImageConversion {
         // stub
     }
 
+    // EFFECTS: initializes filePath with given filePath, and set
+    // default values for all other fields
+    public ImageConversion(String filePath) {
+        // stub
+    }
+
     public String getFilePath() {
         return null; // stub
     }
