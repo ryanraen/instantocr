@@ -20,8 +20,16 @@ public class ConversionHistory {
         // stub
     }
 
-    // REQUIRES: conversions must contain an ImageConversion instance with specified file path
-    // EFFECTS: retrieves the least recent conversion instance that has the given file path
+    // REQUIRES: index < size of list conversion history
+    // EFFECTS: returns the index-th (starting from 0) most recent conversion
+    public ImageConversion getByIndex(int index) {
+        return null; // stub
+    }
+
+    // REQUIRES: conversions must contain an ImageConversion instance
+    // with specified file path
+    // EFFECTS: retrieves the least recent conversion instance
+    // that has the given file path
     public ImageConversion getByFilePath(String filePath) {
         return null; // stub
     }
@@ -32,11 +40,13 @@ public class ConversionHistory {
         // stub
     }
 
-    // REQUIRES: conversions must contain an ImageConversion instance with specified file path
+    // REQUIRES: conversions must contain an ImageConversion instance
+    // with specified file path
     // MODIFIES: this
-    // EFFECTS: deletes the least recent conversion instance that has the given file path
+    // EFFECTS: deletes the least recent conversion instance that
+    // has the given file path
     public void deleteByFilePath(String filePath) {
         // stub
     }
-    
+
 }
