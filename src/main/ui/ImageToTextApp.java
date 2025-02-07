@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Image;
+
 import model.ImageConversion;
 
 // Image to text conversion application with 
@@ -48,12 +50,9 @@ public class ImageToTextApp {
         // stub
     }
 
-    // REQUIRES: id < size of conversion history, and
-    // id must be the index of a valid ImageConversion 
-    // instance in the conversion history
     // EFFECTS: displays the file path and extracted text from
     // a previous image conversion
-    private void displayPrevConversion(int id) {
+    private void displayConversion(ImageConversion conversion) {
         // stub
     }
     
