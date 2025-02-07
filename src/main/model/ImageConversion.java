@@ -62,22 +62,22 @@ public class ImageConversion {
         // stub
     }
 
-    // REQUIRES: image must be a valid image containing lines of Robotto font plain
-    // text
+    // REQUIRES: imageMat must be a valid image containing lines
+    // of Robotto font plain text
     // MODIFIES: this
     // EFFECTS: processes image and saves recognized text in extractedText
     public void processImage() {
         // stub
     }
 
-    // REQUIRES: image must be a standard RGB BufferedImage
+    // REQUIRES: imageMat must contain a standard RGB image
     // MODIFIES: this
     // EFFECTS: converts image to grayscale
     private void toGrayscale() {
         // stub
     }
 
-    // REQUIRES: image must be in grayscale
+    // REQUIRES: imageMat must contain an image in grayscale
     // MODIFIES: this
     // EFFECTS: convert all pixels to either black or white using numerical
     // threshold
@@ -88,7 +88,7 @@ public class ImageConversion {
     // REQUIRES: there must be at least 1 pixel of white margin between adjacent
     // text characters in the image
     // MODIFIES: this
-    // EFFECTS: slices image into a list of sub-images containing 
+    // EFFECTS: slices image into a list of sub-images containing
     // 1 text character each
     private void sliceImage() {
         // stub
@@ -104,8 +104,8 @@ public class ImageConversion {
     // given image matrix must contain exactly 1 recognizable English character,
     // and this character must match an existing template in templates
     // EFFECTS: compares a sliced image with all template character images and
-    // assigns a similarity score out of 1 for the comparison; returns English character
-    // with greatest similarity score
+    // assigns a similarity score out of 1 for the comparison; returns English
+    // character with greatest similarity score
     private char compareWithTemplates(Mat image, List<CharacterTemplate> templates) {
         return 'a'; // stub
     }
