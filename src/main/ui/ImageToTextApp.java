@@ -5,7 +5,7 @@ import java.awt.Image;
 import model.ImageConversion;
 
 // Image to text conversion application with 
-// a conversion instance and conversion history
+// a current conversion instance and conversion history
 public class ImageToTextApp {
 
     // EFFECTS: runs the image to text application
@@ -32,10 +32,17 @@ public class ImageToTextApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: prompts user for image file path,
-    // stores file path in the ImageConversion instance and reads it as an image
+    // EFFECTS: prompts user to choose an image from data/image,
+    // stores file path in the ImageConversion instance
     private void uploadImage() {
         // stub
+    }
+
+    // REQUIRES: current image conversion instance has an uploaded image
+    // MODIFIES: this
+    // EFFECTS: processes image and returns extracted text
+    private String extractText() {
+        return null; // stub
     }
 
     // EFFECTS: displays user command choices
