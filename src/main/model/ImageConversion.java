@@ -10,19 +10,36 @@ import org.opencv.core.Mat;
 // a list of character templates, and the extracted text
 public class ImageConversion {
 
-    // EFFECTS: initializes filePath, extractedText as empty Strings,
-    // initializes image as null, and initializes character template list
+    // EFFECTS: initializes filePath, extractedText as empty Strings, and
+    // initializes imageMat, subImages as null, and templates with all 
+    // existing template images in data/templates
     public ImageConversion() {
         // stub
     }
 
     // EFFECTS: initializes filePath with given filePath, and set
-    // default values for all other fields
+    // appropriate values for all other fields (refer to void constructor)
     public ImageConversion(String filePath) {
         // stub
     }
 
     public String getFilePath() {
+        return null; // stub
+    }
+
+    public Mat getImageMat() {
+        return null; // stub
+    }
+
+    public Mat[] getSubImages() {
+        return null; // stub
+    }
+
+    public double getThreshold() {
+        return 0; // stub
+    }
+
+    public List<CharacterTemplate> getTemplates() {
         return null; // stub
     }
 
