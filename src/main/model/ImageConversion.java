@@ -11,8 +11,7 @@ import org.opencv.core.Mat;
 public class ImageConversion {
 
     // EFFECTS: initializes filePath, extractedText as empty Strings, and
-    // initializes imageMat, subImages as null, and templates with all 
-    // existing template images in data/templates
+    // initializes imageMat, subImages, and templates as null
     public ImageConversion() {
         // stub
     }
