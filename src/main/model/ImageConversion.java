@@ -46,11 +46,12 @@ public class ImageConversion {
         return null; // stub
     }
 
-    // REQURES: path must be a valid file path to an image in data/images
+    // REQURES: this image conversion must have a non empty file path 
+    // pointing to a valid image
     // MODIFIES: this
     // EFFECTS: stores path as filePath, reads the image at path,
     // and stores it in imageMat
-    public void readImage(String path) {
+    public void readImage() {
         // stub
     }
 
