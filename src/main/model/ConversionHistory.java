@@ -20,15 +20,15 @@ public class ConversionHistory {
         // stub
     }
 
-    // REQUIRES: index < size of list conversion history
-    // EFFECTS: returns the index-th (starting from 0) most recent conversion
+    // REQUIRES: index <= size of list conversion history
+    // EFFECTS: returns the index-th (starting from 1) most recent conversion
     public ImageConversion getByIndex(int index) {
         return null; // stub
     }
 
-    // REQUIRES: conversions must contain an ImageConversion instance
+    // REQUIRES: conversion history must contain an ImageConversion instance
     // with specified file path
-    // EFFECTS: retrieves the least recent conversion instance
+    // EFFECTS: retrieves the least recent (earliest) conversion instance
     // that has the given file path
     public ImageConversion getByFilePath(String filePath) {
         return null; // stub
