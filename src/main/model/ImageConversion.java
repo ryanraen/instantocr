@@ -123,8 +123,8 @@ public class ImageConversion {
     // EFFECTS: compares a sliced image with all template character images and
     // assigns a similarity score out of 1 for the comparison; returns English
     // character with greatest similarity score
-    public char compareWithTemplates(Mat image, List<CharacterTemplate> templates) {
-        return 'a'; // stub
+    public String compareWithTemplates(Mat image, List<CharacterTemplate> templates) {
+        return "a"; // stub
     }
 
 }
