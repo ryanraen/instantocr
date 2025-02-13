@@ -5,48 +5,57 @@ import java.util.List;
 
 // Represents a list of previous image conversion instances
 public class ConversionHistory {
+    List<ImageConversion> conversions;
 
     // EFFECTS: initializes list of previous converions as empty list
     public ConversionHistory() {
-        // stub
+        this.conversions = new ArrayList<>();
     }
 
     public List<ImageConversion> getConversions() {
-        return null; // stub
+        return this.conversions;
     }
 
     // EFFECTS: adds the given conversion to the conversion history
     public void addConversion(ImageConversion conversion) {
-        // stub
+        this.conversions.add(conversion);
     }
 
     // REQUIRES: index <= size of list conversion history
     // EFFECTS: returns the index-th (starting from 1) most recent conversion
     public ImageConversion getByIndex(int index) {
-        return null; // stub
+        return conversions.get(conversions.size() - index);
     }
 
-    // REQUIRES: conversion history must contain an ImageConversion instance
-    // with specified file path
     // EFFECTS: retrieves the least recent (earliest) conversion instance
-    // that has the given file path
+    // that has the given file path; returns null if not found
     public ImageConversion getByFilePath(String filePath) {
-        return null; // stub
+        for (ImageConversion conv : conversions) {
+            if (conv.getFilePath().equals(filePath)) {
+                return conv;
+            }
+        }
+        return null;
     }
 
     // MODIFIES: this
     // EFFECTS: clears conversion history
     public void clear() {
-        // stub
+        conversions.clear();
     }
 
-    // REQUIRES: conversions must contain an ImageConversion instance
-    // with specified file path
     // MODIFIES: this
     // EFFECTS: deletes the least recent conversion instance that
-    // has the given file path
-    public void deleteByFilePath(String filePath) {
-        // stub
+    // has the given file path and returns true; 
+    // returns null if not found
+    public Boolean deleteByFilePath(String filePath) {
+        for (int i = 0; i < conversions.size(); i++) {
+            if (conversions.get(i).getFilePath().equals(filePath)) {
+                conversions.remove(i);
+                return true;
+            }
+        }
+        return null;
     }
 
 }
