@@ -30,7 +30,7 @@ public class ImageConversion {
         return null; // stub
     }
 
-    public Mat[] getSubImages() {
+    public List<Mat> getSubImages() {
         return null; // stub
     }
 
@@ -73,7 +73,7 @@ public class ImageConversion {
     // REQUIRES: imageMat must contain a standard RGB image
     // MODIFIES: this
     // EFFECTS: converts image to grayscale
-    private void toGrayscale() {
+    public void toGrayscale() {
         // stub
     }
 
@@ -81,22 +81,24 @@ public class ImageConversion {
     // MODIFIES: this
     // EFFECTS: convert all pixels to either black or white using numerical
     // threshold
-    private void polarizeImage() {
+    public void polarizeImage() {
         // stub
     }
 
-    // REQUIRES: there must be at least 1 pixel of white margin between adjacent
+    // REQUIRES: imageMat must contain an image polarized grayscale image
+    // there must be at least 1 pixel of white margin between adjacent
     // text characters in the image
     // MODIFIES: this
     // EFFECTS: slices image into a list of sub-images containing
-    // 1 text character each
-    private void sliceImage() {
+    // 1 text character each, in the order that they appear left-to-right
+    public void sliceImage() {
         // stub
         // Note to self: slice out rows first then columns
     }
 
+    // REQUIRES: width > 0 && height > 0
     // EFFECTS: returns resized image that matches given width and height
-    private Mat resizeImage(Mat image, int width, int height) {
+    public Mat resizeImage(Mat image, int width, int height) {
         return null; // stub
     }
 
@@ -106,7 +108,7 @@ public class ImageConversion {
     // EFFECTS: compares a sliced image with all template character images and
     // assigns a similarity score out of 1 for the comparison; returns English
     // character with greatest similarity score
-    private char compareWithTemplates(Mat image, List<CharacterTemplate> templates) {
+    public char compareWithTemplates(Mat image, List<CharacterTemplate> templates) {
         return 'a'; // stub
     }
 
