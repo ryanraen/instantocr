@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.opencv.imgcodecs.Imgcodecs;
 
 public class TestCharacterTemplate {
-
     CharacterTemplate template;
 
     @BeforeEach
@@ -19,7 +18,7 @@ public class TestCharacterTemplate {
     public void testConstructor() {
         assertEquals("data/templates/a.png", template.getFilePath());
         assertEquals(Imgcodecs.imread("data/templates/a.png"), template.getImageMat());
-        assertEquals('a', template.getLabel());
+        assertEquals("a", template.getLabel());
     }
     
 }
