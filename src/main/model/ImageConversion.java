@@ -84,6 +84,12 @@ public class ImageConversion {
         // stub
     }
 
+    // MODIFIES: this
+    // EFFECTS: crops image to the outermost black pixel
+    public void crop(Mat image) {
+        // stub
+    }
+
     // REQUIRES: imageMat must contain an image in grayscale
     // MODIFIES: this
     // EFFECTS: convert all pixels to either black or white using numerical
