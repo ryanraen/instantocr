@@ -46,6 +46,13 @@ public class ImageConversion {
         return null; // stub
     }
 
+    // MODIFIES: this
+    // EFFECTS: reads all template images in data/templates
+    // and stores in character templates
+    public void initTemplates() {
+        // stub
+    }
+
     // REQUIRES: this image conversion instance must have an existing
     // stored valid filePath
     // MODIFIES: this
