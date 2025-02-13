@@ -5,7 +5,7 @@ import java.util.List;
 
 // Represents a list of previous image conversion instances
 public class ConversionHistory {
-    List<ImageConversion> conversions;
+    private List<ImageConversion> conversions;
 
     // EFFECTS: initializes list of previous converions as empty list
     public ConversionHistory() {
