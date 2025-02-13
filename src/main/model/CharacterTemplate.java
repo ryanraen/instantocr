@@ -1,5 +1,6 @@
 package model;
 
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 
@@ -7,6 +8,9 @@ import org.opencv.imgcodecs.Imgcodecs;
 // a matrix that holds all pixels in the template image, 
 // and a String holding the English alphabet identity of the template
 public class CharacterTemplate {
+    private String filePath;
+    private Mat imageMat;
+    private String label;
 
     // REQUIRES: path be a relative path pointing to a valid template
     // image in the project data
@@ -14,19 +18,22 @@ public class CharacterTemplate {
     // the image file at path, storing its file name as 
     // the label (excluding file extension)
     public CharacterTemplate(String path) {
-        // stub
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        this.filePath = path;
+        this.imageMat = Imgcodecs.imread(path);
+        this.label = path.replaceFirst("data/templates/", "").replaceFirst("\\..+", "");
     }
 
     public String getFilePath() {
-        return null; // stub
+        return this.filePath;
     }
 
     public Mat getImageMat() {
-        return null; // stub
+        return this.imageMat;
     }
 
-    public char getLabel() {
-        return 'a'; // stub
+    public String getLabel() {
+        return this.label;
     }
 
 }
