@@ -7,6 +7,7 @@ import org.opencv.core.Mat;
 // Represents an image conversion having a file path, matrix that holds the image
 // a list of matrices holding sliced sub-images of individual characters, 
 // a black and white polarization threshold constant, 
+// the standard width and height of comparison templates,
 // a list of character templates, and the extracted text
 public class ImageConversion {
 
