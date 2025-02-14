@@ -140,7 +140,7 @@ public class TestConversionHistory {
         history.addConversion(conversion2);
         history.addConversion(conversion1);
         assertEquals(2, history.getConversions().size());
-        assertFalse(history.deleteByFilePath("data/images/simple_sentence.png"));
+        assertFalse(history.deleteByFilePath("data/images/a.png"));
         assertEquals(2, history.getConversions().size());
         assertEquals(conversion1, history.getByIndex(1));
         assertEquals(conversion2, history.getByIndex(2));
