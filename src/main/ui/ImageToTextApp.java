@@ -91,18 +91,17 @@ public class ImageToTextApp {
         } else {
             try {
                 numericalChoice = Integer.parseInt(choice);
+                if (numericalChoice > 0 && numericalChoice <= selection.size()) {
+                    conv.readImage(selection.get(numericalChoice - 1));
+                    System.out.println("Selected successfully");
+                    System.out.println("Adding instance to history...\n");
+                    history.addConversion(conv);
+                    extractText();
+                } else {
+                    System.out.println("Invalid selection!");
+                    System.out.println("Returning to main menu...\n");
+                }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid selection!");
-                System.out.println("Returning to main menu...\n");
-            }
-
-            if (numericalChoice > 0 && numericalChoice <= selection.size()) {
-                conv.readImage(selection.get(numericalChoice - 1));
-                System.out.println("Selected successfully");
-                System.out.println("Adding instance to history...\n");
-                history.addConversion(conv);
-                extractText();
-            } else {
                 System.out.println("Invalid selection!");
                 System.out.println("Returning to main menu...\n");
             }
@@ -182,14 +181,13 @@ public class ImageToTextApp {
         } else {
             try {
                 numericalChoice = Integer.parseInt(choice);
+                if (numericalChoice > 0 && numericalChoice <= history.getConversions().size()) {
+                    displayConversion(numericalChoice);
+                } else {
+                    System.out.println("Invalid selection!");
+                    System.out.println("Returning to main menu...\n");
+                }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid selection!");
-                System.out.println("Returning to main menu...\n");
-            }
-
-            if (numericalChoice > 0 && numericalChoice <= history.getConversions().size()) {
-                displayConversion(numericalChoice);
-            } else {
                 System.out.println("Invalid selection!");
                 System.out.println("Returning to main menu...\n");
             }
