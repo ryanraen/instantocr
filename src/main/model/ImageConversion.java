@@ -126,8 +126,7 @@ public class ImageConversion {
         Imgproc.cvtColor(imageMat, imageMat, Imgproc.COLOR_BGR2GRAY);
     }
 
-    // MODIFIES: this
-    // EFFECTS: crops image to the outermost colorRGB pixel
+    // EFFECTS: returns cropped image to the outermost colorRGB pixel
     public Mat crop(Mat image, double colorRGB) {
         int minY = image.rows();
         int minX = image.cols();
