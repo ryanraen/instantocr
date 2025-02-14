@@ -3,12 +3,15 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.opencv.core.Core;
+
 // Represents a list of previous image conversion instances
 public class ConversionHistory {
     private List<ImageConversion> conversions;
 
     // EFFECTS: initializes list of previous converions as empty list
     public ConversionHistory() {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         this.conversions = new ArrayList<>();
     }
 
@@ -47,7 +50,7 @@ public class ConversionHistory {
     // MODIFIES: this
     // EFFECTS: deletes the least recent conversion instance that
     // has the given file path and returns true; 
-    // returns null if not found
+    // returns false if not found
     public Boolean deleteByFilePath(String filePath) {
         for (int i = 0; i < conversions.size(); i++) {
             if (conversions.get(i).getFilePath().equals(filePath)) {
@@ -55,7 +58,7 @@ public class ConversionHistory {
                 return true;
             }
         }
-        return null;
+        return false;
     }
 
 }
