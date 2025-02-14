@@ -120,11 +120,11 @@ public class ImageConversion {
         return null; // stub
     }
 
-    // REQUIRES: image is a grayscale image matrix
-    // EFFECTS: slices image vertically to return
-    // list of column indices bounding sub images
-    public List<Integer> sliceVertical(Mat image, double whiteRGB) {
-        return null; // stub
+    // REQUIRES: rows contains lines of text sliced by sliceHorizontal
+    // EFFECTS: slices image rows vertically and adds all single character
+    // sub images to subImages
+    public void sliceVertical(List<Mat> rows, double whiteRGB) {
+        // stub
     }
 
     // REQUIRES: width > 0 && height > 0
