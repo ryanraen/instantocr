@@ -110,7 +110,24 @@ public class ImageConversion {
         // Note to self: slice out rows first then columns
     }
 
-    // REQUIRES: width > 0 && height > 0 
+
+
+    
+    // REQUIRES: image is a grayscale image matrix
+    // EFFECTS: slices image horizontally to return
+    // list of row indices bounding sub images
+    public List<Integer> sliceHorizontal(Mat image, double whiteRGB) {
+        return null; // stub
+    }
+
+    // REQUIRES: image is a grayscale image matrix
+    // EFFECTS: slices image vertically to return
+    // list of column indices bounding sub images
+    public List<Integer> sliceVertical(Mat image, double whiteRGB) {
+        return null; // stub
+    }
+
+    // REQUIRES: width > 0 && height > 0
     // image must be a polarized and slice grayscale pixel matrix
     // EFFECTS: returns resized image that matches given width and height
     public Mat resizeImage(Mat image, int width, int height) {
