@@ -199,10 +199,10 @@ public class ImageConversion {
     // list of row indices bounding sub images
     public List<Integer> sliceHorizontal(Mat image, double whiteRGB) {
         List<Integer> rowsPos = new ArrayList<>();
-        Boolean onWhiteRow = false;
+        boolean onWhiteRow = false;
 
         for (int row = 0; row < image.rows(); row++) {
-            Boolean allWhiteRow = true;
+            boolean allWhiteRow = true;
             for (int col = 0; col < image.cols(); col++) {
                 if (image.get(row, col)[0] != whiteRGB) {
                     allWhiteRow = false;
@@ -229,9 +229,9 @@ public class ImageConversion {
         for (int i = 0; i < rows.size(); i++) {
             colsPos.add(new ArrayList<>());
             Mat image = rows.get(i);
-            Boolean onWhiteCol = (image.get(0, 0)[0] == whiteRGB);
+            boolean onWhiteCol = (image.get(0, 0)[0] == whiteRGB);
             for (int col = 0; col < image.cols(); col++) {
-                Boolean allWhiteCol = true;
+                boolean allWhiteCol = true;
                 for (int row = 0; row < image.rows(); row++) {
                     if (image.get(row, col)[0] != whiteRGB) {
                         allWhiteCol = false;

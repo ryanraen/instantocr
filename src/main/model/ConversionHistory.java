@@ -51,7 +51,7 @@ public class ConversionHistory {
     // EFFECTS: deletes the least recent conversion instance that
     // has the given file path and returns true; 
     // returns false if not found
-    public Boolean deleteByFilePath(String filePath) {
+    public boolean deleteByFilePath(String filePath) {
         for (int i = 0; i < conversions.size(); i++) {
             if (conversions.get(i).getFilePath().equals(filePath)) {
                 conversions.remove(i);
