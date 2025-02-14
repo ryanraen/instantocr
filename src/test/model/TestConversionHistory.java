@@ -115,6 +115,21 @@ public class TestConversionHistory {
     }
 
     @Test
+    public void testDeleteByIndex() {
+        assertEquals(0, history.getConversions().size());
+        assertFalse(history.deleteByIndex(1));
+        history.addConversion(conversion2);
+        assertEquals(1, history.getConversions().size());
+        assertTrue(history.deleteByIndex(1));
+        assertEquals(0, history.getConversions().size());
+        history.addConversion(conversion1);
+        history.addConversion(conversion2);
+        assertTrue(history.deleteByIndex(1));
+        assertEquals(1, history.getConversions().size());
+        assertEquals(conversion1, history.getByIndex(1));
+    }
+
+    @Test
     public void testDeleteByFilePath() {
         assertEquals(0, history.getConversions().size());
         history.addConversion(conversion2);
