@@ -30,7 +30,7 @@ public class TestImageConversion {
     @BeforeEach
     public void setup() {
         conversion = new ImageConversion();
-        conversion2 = new ImageConversion("data\\images\\hello.png");
+        conversion2 = new ImageConversion("data\\images\\greetings.png");
         conversion4 = new ImageConversion("data\\test\\butterfly.png");
         conversion5 = new ImageConversion("data\\test\\unprocessed\\unprocessed_a.png");
         conversion6 = new ImageConversion("data\\test\\unprocessed\\word.png");
@@ -52,8 +52,8 @@ public class TestImageConversion {
 
     @Test
     public void testStringConstructor() {
-        assertEquals("data\\images\\hello.png", conversion2.getFilePath());
-        assertEquals(Imgcodecs.imread("data\\images\\hello.png").dump(), conversion2.getImageMat().dump());
+        assertEquals("data\\images\\greetings.png", conversion2.getFilePath());
+        assertEquals(Imgcodecs.imread("data\\images\\greetings.png").dump(), conversion2.getImageMat().dump());
         assertTrue(conversion.getSubImages().isEmpty());
         assertEquals(101, (int) conversion2.getThreshold());
         assertFalse(conversion.getTemplates().isEmpty());
@@ -111,7 +111,7 @@ public class TestImageConversion {
     @Test
     public void testProcessImageWord() {
         conversion2.readImage();
-        assertEquals(Imgcodecs.imread("data\\images\\hello.png").dump(), conversion2.getImageMat().dump());
+        assertEquals(Imgcodecs.imread("data\\images\\greetings.png").dump(), conversion2.getImageMat().dump());
         conversion2.processImage();
         assertEquals("hello", conversion2.getExtractedText());
     }
@@ -119,9 +119,9 @@ public class TestImageConversion {
     @Test
     public void testToGrayscaleWord() {
         conversion2.readImage();
-        assertEquals(Imgcodecs.imread("data\\images\\hello.png").dump(), conversion2.getImageMat().dump());
+        assertEquals(Imgcodecs.imread("data\\images\\greetings.png").dump(), conversion2.getImageMat().dump());
         conversion2.toGrayscale();
-        Mat expected = Imgcodecs.imread("data\\test\\grayscale\\grayscale_hello.png");
+        Mat expected = Imgcodecs.imread("data\\test\\grayscale\\grayscale_greetings.png");
         for (int i = 0; i < expected.rows(); i++) {
             for (int j = 0; j < expected.cols(); j++) {
                 assertEquals(expected.get(i, j)[0], conversion2.getImageMat().get(i, j)[0]);
@@ -132,16 +132,16 @@ public class TestImageConversion {
     @Test
     public void testPolarizeImageSentence() {
         conversion2.readImage();
-        assertEquals(Imgcodecs.imread("data\\images\\hello.png").dump(), conversion2.getImageMat().dump());
+        assertEquals(Imgcodecs.imread("data\\images\\greetings.png").dump(), conversion2.getImageMat().dump());
         conversion2.toGrayscale();
-        Mat expected = Imgcodecs.imread("data\\test\\grayscale\\grayscale_hello.png");
+        Mat expected = Imgcodecs.imread("data\\test\\grayscale\\grayscale_greetings.png");
         for (int i = 0; i < expected.rows(); i++) {
             for (int j = 0; j < expected.cols(); j++) {
                 assertEquals(expected.get(i, j)[0], conversion2.getImageMat().get(i, j)[0]);
             }
         }
         conversion2.polarizeImage(conversion2.getImageMat(), ImageConversion.POLARIZE_THRESHOLD);
-        Mat expectedPolarized = Imgcodecs.imread("data\\test\\polarized\\polarized_hello.png");
+        Mat expectedPolarized = Imgcodecs.imread("data\\test\\polarized\\polarized_greetings.png");
         for (int i = 0; i < expectedPolarized.rows(); i++) {
             for (int j = 0; j < expectedPolarized.cols(); j++) {
                 assertEquals(expectedPolarized.get(i, j)[0], conversion2.getImageMat().get(i, j)[0]);
@@ -205,7 +205,7 @@ public class TestImageConversion {
         assertEquals(423, (int) colsPos.get(41));
         assertFalse(matList.get(0) == null);
         assertTrue(255.0 == matList.get(0).get(0, 0)[0]);
-        conversion7.readImage("data\\images\\hello.png");
+        conversion7.readImage("data\\images\\greetings.png");
         conversion7.toGrayscale();
         matList = new ArrayList<>();
         matList.add(conversion7.getImageMat());
