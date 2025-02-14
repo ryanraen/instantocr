@@ -48,8 +48,20 @@ public class ConversionHistory {
     }
 
     // MODIFIES: this
+    // EFFECTS: deletes the index-th (starting from 1) most recent conversion
+    // and returns true; returns false if index > conversions size
+    public boolean deleteByIndex(int index) {
+        if (index > conversions.size()) {
+            return false;
+        } else {
+            conversions.remove(conversions.size() - index);
+            return true;
+        }
+    }
+
+    // MODIFIES: this
     // EFFECTS: deletes the least recent conversion instance that
-    // has the given file path and returns true; 
+    // has the given file path and returns true;
     // returns false if not found
     public boolean deleteByFilePath(String filePath) {
         for (int i = 0; i < conversions.size(); i++) {
