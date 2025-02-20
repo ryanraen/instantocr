@@ -24,3 +24,5 @@ Recognizing the limitations of my current skill and knowledge, I will begin with
 - As a user, I want to be able to view a list of the image conversions that I have executed previously, so I can keep track of all the images I’ve processed.
 - As a user, I want to be able to remove an image conversion from my conversion history.
 - As a user, I want to be able to select a certain image conversion and retrieve the image's file path and the extracted text from that instance.
+- As a user, I want to be able to save my conversion history to file if I choose to do so
+- As a user, I want to be able to be able to load my conversion history from file if I choose to do so
