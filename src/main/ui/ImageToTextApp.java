@@ -1,22 +1,30 @@
 package ui;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import model.ConversionHistory;
 import model.ImageConversion;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 // Image to text conversion application with 
 // a current conversion instance and conversion history
 // Inspiration taken from the CPSC 210 TellerApp:
 // https://github.students.cs.ubc.ca/CPSC210/TellerApp
 public class ImageToTextApp {
-    ImageConversion conv;
-    ConversionHistory history;
-    Scanner input;
-    List<String> selection;
+    private static final String JSON_STORE = "./data/persistence/history.json";
+    private ImageConversion conv;
+    private ConversionHistory history;
+    private Scanner input;
+    private List<String> selection;
+
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the image to text application
     public ImageToTextApp() {
@@ -32,6 +40,8 @@ public class ImageToTextApp {
         input = new Scanner(System.in);
         input.useDelimiter(System.getProperty("line.separator"));
         selection = new ArrayList<>();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
 
         File[] files = new File("data\\images").listFiles();
         for (File file : files) {
@@ -66,11 +76,17 @@ public class ImageToTextApp {
     // EFFECTS: handles user commands
     private void handleCommand(String command) {
         switch (command) {
-            case "s":
+            case "c":
                 selectImage();
                 break;
             case "v":
                 selectHistory();
+                break;
+            case "s":
+                saveHistory();
+                break;
+            case "l":
+                loadHistory();
                 break;
             default:
                 System.out.println("Invalid command...\n");
@@ -164,8 +180,11 @@ public class ImageToTextApp {
     // EFFECTS: displays user command choices
     private void displayCommands() {
         System.out.println("Select an option:");
-        System.out.println("[s] - Select an image for conversion");
+        System.out.println("[c] - Choose an image for conversion");
         System.out.println("[v] - View conversion history");
+        System.out.println("...\n");
+        System.out.println("[s] - Save conversion history to file");
+        System.out.println("[l] - Load conversion history from file");
         System.out.println("...\n");
         System.out.println("[q] - Quit");
     }
@@ -246,13 +265,25 @@ public class ImageToTextApp {
 
     // EFFECTS: saves the conversion history to file
     private void saveHistory() {
-        // stub
+        try {
+            jsonWriter.open();
+            jsonWriter.write(history);
+            jsonWriter.close();
+            System.out.println("Saved conversion history to " + JSON_STORE + "\n");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: loads workroom from file
     private void loadHistory() {
-        // stub
+        try {
+            history = jsonReader.read();
+            System.out.println("Loaded conversion history from " + JSON_STORE + "\n");
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 }
