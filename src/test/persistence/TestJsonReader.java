@@ -46,7 +46,7 @@ class TestJsonReader extends TestJson {
             List<ImageConversion> conversions = history.getConversions();
             assertEquals(2, conversions.size());
             checkConversion("data/test/persistence/first_image.png", "hello", conversions.get(0));
-            checkConversion("data/test/persistence/first_image.png", "banana", conversions.get(1));
+            checkConversion("data/test/persistence/second_image.png", "banana", conversions.get(1));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
