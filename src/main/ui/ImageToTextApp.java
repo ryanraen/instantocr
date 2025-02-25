@@ -11,7 +11,7 @@ import model.ImageConversion;
 // Image to text conversion application with 
 // a current conversion instance and conversion history
 // Inspiration taken from the CPSC 210 TellerApp:
-// https://github.students.cs.ubc.ca/CPSC210/TellerApp/tree/main
+// https://github.students.cs.ubc.ca/CPSC210/TellerApp
 public class ImageToTextApp {
     ImageConversion conv;
     ConversionHistory history;
