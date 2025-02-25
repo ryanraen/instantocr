@@ -18,7 +18,7 @@ class TestJsonReader extends TestJson {
 
     @Test
     void testReaderNonExistentFile() {
-        JsonReader reader = new JsonReader("./data/noSuchFile.json");
+        JsonReader reader = new JsonReader("./data/test/persistence/noSuchFile.json");
         try {
             ConversionHistory history = reader.read();
             fail("IOException expected");
@@ -29,7 +29,7 @@ class TestJsonReader extends TestJson {
 
     @Test
     void testReaderEmptyHistory() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyHistory.json");
+        JsonReader reader = new JsonReader("./data/test/persistence/testReaderEmptyHistory.json");
         try {
             ConversionHistory history = reader.read();
             assertTrue(history.getConversions().isEmpty());
@@ -40,7 +40,7 @@ class TestJsonReader extends TestJson {
 
     @Test
     void testReaderGeneralHistory() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralHistory.json");
+        JsonReader reader = new JsonReader("./data/test/persistence/testReaderGeneralHistory.json");
         try {
             ConversionHistory history = reader.read();
             List<ImageConversion> conversions = history.getConversions();
