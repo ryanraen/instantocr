@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
@@ -12,12 +13,16 @@ import org.opencv.core.Size;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
+import persistence.Writable;
+
 // Represents an image conversion having a file path, matrix that holds the image
 // a list of matrices holding sliced sub-images of individual characters, 
 // a black and white polarization threshold constant, 
 // the standard width and height of comparison templates,
 // a list of character templates, and the extracted text
-public class ImageConversion {
+// JSON related methods adapted from the CPSC 210 JsonSerializationDemo:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+public class ImageConversion implements Writable {
     public static final int POLARIZE_THRESHOLD = 101;
     public static final int TEMPLATE_WIDTH = 8;
     public static final int TEMPLATE_HEIGHT = 16;
@@ -54,7 +59,7 @@ public class ImageConversion {
         initTemplates();
     }
 
-    // EFFECTS: initializes filePath with given filePath, 
+    // EFFECTS: initializes filePath with given filePath,
     // extractedText with given extracted text, and set
     // appropriate values for all other fields (refer to void constructor)
     public ImageConversion(String filePath, String extractedText) {
@@ -292,6 +297,14 @@ public class ImageConversion {
             }
         }
         return maxScoreChar;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("filePath", filePath);
+        json.put("extractedText", extractedText);
+        return json;
     }
 
 }
