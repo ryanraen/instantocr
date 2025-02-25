@@ -1,0 +1,10 @@
+{"conversions": [
+    {
+        "filePath": "data/test/persistence/first_image.png",
+        "extractedText": "hello"
+    },
+    {
+        "filePath": "data/test/persistence/second_image.png",
+        "extractedText": "banana"
+    }
+]}
