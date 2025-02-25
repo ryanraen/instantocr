@@ -20,7 +20,7 @@ class TestJsonWriter extends TestJson {
     void testWriterInvalidFile() {
         try {
             ConversionHistory history = new ConversionHistory();
-            JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
+            JsonWriter writer = new JsonWriter("./data/test/persistence/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");
         } catch (IOException e) {
@@ -32,12 +32,12 @@ class TestJsonWriter extends TestJson {
     void testWriterEmptyHistory() {
         try {
             ConversionHistory history = new ConversionHistory();
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyHistory.json");
+            JsonWriter writer = new JsonWriter("./data/test/persistence/testWriterEmptyHistory.json");
             writer.open();
             writer.write(history);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyHistory.json");
+            JsonReader reader = new JsonReader("./data/test/persistence/testWriterEmptyHistory.json");
             history = reader.read();
             assertTrue(history.getConversions().isEmpty());
         } catch (IOException e) {
@@ -49,21 +49,21 @@ class TestJsonWriter extends TestJson {
     void testWriterGeneralHistory() {
         try {
             ConversionHistory history = new ConversionHistory();
-            history.addConversion(new ImageConversion("data/images/greetings.png"));
-            history.addConversion(new ImageConversion("data/images/banana.png"));
+            history.addConversion(new ImageConversion("data/test/persistence/first_image.png"));
+            history.addConversion(new ImageConversion("data/test/persistence/second_image.png"));
             history.getConversions().get(0).processImage();
             history.getConversions().get(1).processImage();
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralHistory.json");
+            JsonWriter writer = new JsonWriter("./data/test/persistence/testWriterGeneralHistory.json");
             writer.open();
             writer.write(history);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralHistory.json");
+            JsonReader reader = new JsonReader("./data/test/persistence/testWriterGeneralHistory.json");
             history = reader.read();
             List<ImageConversion> conversions = history.getConversions();
             assertEquals(2, conversions.size());
-            checkConversion("data/images/greetings.png", "hello", conversions.get(0));
-            checkConversion("data/images/banana.png", "banana", conversions.get(1));
+            checkConversion("data/test/persistence/first_image.png", "hello", conversions.get(0));
+            checkConversion("data/test/persistence/second_image.png", "banana", conversions.get(1));
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");
