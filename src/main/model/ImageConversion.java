@@ -58,7 +58,14 @@ public class ImageConversion {
     // extractedText with given extracted text, and set
     // appropriate values for all other fields (refer to void constructor)
     public ImageConversion(String filePath, String extractedText) {
-        // stub
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        this.filePath = filePath;
+        this.imageMat = Imgcodecs.imread(filePath);
+        this.subImages = new ArrayList<>();
+        this.templates = new ArrayList<>();
+        this.extractedText = extractedText;
+
+        initTemplates();
     }
 
     public String getFilePath() {
