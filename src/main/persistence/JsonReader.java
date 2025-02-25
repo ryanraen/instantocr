@@ -24,12 +24,12 @@ public class JsonReader {
 
     // EFFECTS: reads file at given path as String and returns it
     // throws IOException if an error occurs reading data from file
-    private String readFile() throws IOException {
+    private String readFile(String path) throws IOException {
         return null; // stub
     }
 
     // EFFECTS: parses ConversionHistory from JSON object and returns it
-    private ConversionHistory parseHistory() {
+    private ConversionHistory parseHistory(JSONObject jsonObject) {
         return null; // stub
     }
 
