@@ -3,10 +3,16 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.opencv.core.Core;
 
+import persistence.Writable;
+
 // Represents a list of previous image conversion instances
-public class ConversionHistory {
+// JSON related methods adapted from the CPSC 210 JsonSerializationDemo:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+public class ConversionHistory implements Writable{
     private List<ImageConversion> conversions;
 
     // EFFECTS: initializes list of previous converions as empty list
@@ -71,6 +77,24 @@ public class ConversionHistory {
             }
         }
         return false;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("conversions", conversionsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns conversions in this conversion history as a JSON array
+    private JSONArray conversionsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (ImageConversion conv : conversions) {
+            jsonArray.put(conv.toJson());
+        }
+
+        return jsonArray;
     }
 
 }
