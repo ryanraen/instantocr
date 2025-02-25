@@ -54,6 +54,13 @@ public class ImageConversion {
         initTemplates();
     }
 
+    // EFFECTS: initializes filePath with given filePath, 
+    // extractedText with given extracted text, and set
+    // appropriate values for all other fields (refer to void constructor)
+    public ImageConversion(String filePath, String extractedText) {
+        // stub
+    }
+
     public String getFilePath() {
         return this.filePath;
     }
