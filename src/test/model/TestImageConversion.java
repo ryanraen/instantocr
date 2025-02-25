@@ -24,6 +24,7 @@ public class TestImageConversion {
     ImageConversion conversion5;
     ImageConversion conversion6;
     ImageConversion conversion7;
+    ImageConversion conversion8;
     File templatePath;
     List<CharacterTemplate> templates;
 
@@ -35,6 +36,7 @@ public class TestImageConversion {
         conversion5 = new ImageConversion("data\\test\\unprocessed\\unprocessed_a.png");
         conversion6 = new ImageConversion("data\\test\\unprocessed\\word.png");
         conversion7 = new ImageConversion();
+        conversion8 = new ImageConversion("data\\images\\greetings.png", "hello");
 
         templatePath = new File("data\\test\\templates");
         templates = new ArrayList<>();
@@ -54,10 +56,20 @@ public class TestImageConversion {
     public void testStringConstructor() {
         assertEquals("data\\images\\greetings.png", conversion2.getFilePath());
         assertEquals(Imgcodecs.imread("data\\images\\greetings.png").dump(), conversion2.getImageMat().dump());
-        assertTrue(conversion.getSubImages().isEmpty());
+        assertTrue(conversion2.getSubImages().isEmpty());
         assertEquals(101, (int) conversion2.getThreshold());
-        assertFalse(conversion.getTemplates().isEmpty());
+        assertFalse(conversion2.getTemplates().isEmpty());
         assertEquals("", conversion2.getExtractedText());
+    }
+
+    @Test
+    public void testPathAndExtractedTextConstructor() {
+        assertEquals("data\\images\\greetings.png", conversion8.getFilePath());
+        assertEquals(Imgcodecs.imread("data\\images\\greetings.png").dump(), conversion8.getImageMat().dump());
+        assertTrue(conversion8.getSubImages().isEmpty());
+        assertEquals(101, (int) conversion8.getThreshold());
+        assertFalse(conversion8.getTemplates().isEmpty());
+        assertEquals("hello", conversion8.getExtractedText());
     }
 
     @Test
