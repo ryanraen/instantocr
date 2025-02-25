@@ -244,4 +244,15 @@ public class ImageToTextApp {
         history.deleteByIndex(index);
     }
 
+    // EFFECTS: saves the conversion history to file
+    private void saveHistory() {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadHistory() {
+        // stub
+    }
+
 }
