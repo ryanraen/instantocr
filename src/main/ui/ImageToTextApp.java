@@ -276,7 +276,7 @@ public class ImageToTextApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads conversion history from file
     private void loadHistory() {
         try {
             history = jsonReader.read();
