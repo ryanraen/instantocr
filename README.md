@@ -1,4 +1,4 @@
-# Image to Text Tool 
+# InstantOCR
 
 ## What does it do?
 
