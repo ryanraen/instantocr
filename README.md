@@ -26,3 +26,11 @@ Recognizing the limitations of my current skill and knowledge, I will begin with
 - As a user, I want to be able to select a certain image conversion and retrieve the image's file path and the extracted text from that instance.
 - As a user, I want to be able to save my conversion history to file if I choose to do so
 - As a user, I want to be able to be able to load my conversion history from file if I choose to do so
+
+# Instructions for End User
+
+- You can add a conversion instance to the history list by selecting an image from the file path list and clicking the convert button
+- You can extract the plain text gathered from the selected image by copying it from the conversion tab text area
+- You can see the visual render of the chosen image in the conversion tab by selecting it from the file path list
+- You can save the state of the application by clicking ```File``` in the menu bar and clicking ```Save```
+- You can reload the state of the application by clicking ```File``` in the menu bar and clicking ```Load```
