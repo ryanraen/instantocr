@@ -11,7 +11,7 @@ import ui.gui.tabs.HistoryTab;
 // Adapted from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemStarters/tree/main/SmartHome
 public class ImageToTextGUI extends JFrame {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         // stub
     }
     
@@ -35,6 +35,12 @@ public class ImageToTextGUI extends JFrame {
     // MODIFIES: this
     // EFFECTS: adds conversion tab and history tab to this UI
     private void loadTabs() {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds menubar with save and load options
+    private void loadMenuBar() {
         // stub
     }
 
