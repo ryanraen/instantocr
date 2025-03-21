@@ -14,6 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.ui.FlatButtonBorder;
+
 import model.ConversionHistory;
 import model.ImageConversion;
 import persistence.JsonReader;
@@ -27,8 +33,8 @@ public class ImageToTextGUI extends JFrame {
     public static final int CONVERSION_TAB_INDEX = 0;
     public static final int HISTORY_TAB_INDEX = 1;
 
-    public static final int WIDTH = 600;
-    public static final int HEIGHT = 400;
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 600;
 
     private static final String JSON_STORE = "./data/persistence/history.json";
 
@@ -37,6 +43,8 @@ public class ImageToTextGUI extends JFrame {
     private JMenuItem saveOption;
     private JMenuItem loadOption;
 
+    private JPanel conversionTab;
+    private JPanel historyTab;
     private JTabbedPane navBar;
 
     private JsonWriter jsonWriter;
@@ -47,6 +55,7 @@ public class ImageToTextGUI extends JFrame {
     private List<String> imageSelection;
 
     public static void main(String[] args) {
+        FlatIntelliJLaf.setup();
         new ImageToTextGUI();
     }
 
@@ -121,8 +130,8 @@ public class ImageToTextGUI extends JFrame {
     // MODIFIES: this
     // EFFECTS: adds conversion tab and history tab to this UI
     private void loadTabs() {
-        JPanel conversionTab = new ConversionTab(this);
-        JPanel historyTab = new HistoryTab(this);
+        conversionTab = new ConversionTab(this);
+        historyTab = new HistoryTab(this);
 
         navBar.add(conversionTab, CONVERSION_TAB_INDEX);
         navBar.setTitleAt(CONVERSION_TAB_INDEX, "Convert");
@@ -173,6 +182,8 @@ public class ImageToTextGUI extends JFrame {
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
+        HistoryTab historyTab = (HistoryTab) navBar.getComponent(HISTORY_TAB_INDEX);
+        historyTab.updateHistoryList();
     }
 
     // EFFECTS: returns navigation bar of this UI
