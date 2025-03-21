@@ -1,8 +1,5 @@
 package ui.gui.tabs;
 
-import java.awt.FlowLayout;
-
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import ui.ImageToTextGUI;
@@ -12,7 +9,7 @@ import ui.ImageToTextGUI;
 public abstract class Tab extends JPanel {
 
     private final ImageToTextGUI controller;
-    
+
     // REQUIRES: ImageToTextGUI controller that holds this tab
     public Tab(ImageToTextGUI controller) {
         this.controller = controller;
