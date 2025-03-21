@@ -14,11 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
-import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.ui.FlatButtonBorder;
 
 import model.ConversionHistory;
 import model.ImageConversion;
