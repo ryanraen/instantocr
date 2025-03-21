@@ -1,6 +1,5 @@
 package ui.gui.tabs;
 
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -125,6 +124,13 @@ public class ConversionTab extends Tab {
         String buttonName = "Convert!";
         convertButton = new JButton(buttonName);
         convertButton.setSize((int) (WIDTH * 0.5), (int) (HEIGHT * 0.5));
+        addConvertButtonListener(buttonName);
+        add(convertButton);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds action listener for convert button
+    private void addConvertButtonListener(String buttonName) {
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -139,12 +145,14 @@ public class ConversionTab extends Tab {
                         extractedTextArea.setText(extractedText);
                         extractedTextPane.setViewportView(extractedTextArea);
                         getController().initializeConversion();
+
+                        HistoryTab tab = (HistoryTab) getController().getNavBar()
+                                .getComponentAt(ImageToTextGUI.HISTORY_TAB_INDEX);
+                        tab.updateHistoryList();
                     }
                 }
             }
         });
-
-        add(convertButton);
     }
 
     // MODIFIES: this
