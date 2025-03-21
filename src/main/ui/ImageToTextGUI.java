@@ -27,8 +27,8 @@ public class ImageToTextGUI extends JFrame {
     public static final int CONVERSION_TAB_INDEX = 0;
     public static final int HISTORY_TAB_INDEX = 1;
 
-    public static final int WIDTH = 1200;
-    public static final int HEIGHT = 800;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 400;
 
     private static final String JSON_STORE = "./data/persistence/history.json";
 
@@ -57,6 +57,7 @@ public class ImageToTextGUI extends JFrame {
         super("Image to Text Converter");
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -91,6 +92,21 @@ public class ImageToTextGUI extends JFrame {
     // EFFECTS: returns the list of selectable images paths
     public List<String> getSelection() {
         return imageSelection;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: converts selected image and returns extracted text
+    public String convertImage(String path) {
+        conversion.readImage(path);
+        conversion.processImage();
+        history.addConversion(conversion);
+        return conversion.getExtractedText();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: replaces current conversion with a new instance
+    public void initializeConversion() {
+        conversion = new ImageConversion();
     }
 
     // MODIFIES: this
