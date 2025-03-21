@@ -20,7 +20,7 @@ class TestJsonReader extends TestJson {
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/test/persistence/noSuchFile.json");
         try {
-            ConversionHistory history = reader.read();
+            reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
