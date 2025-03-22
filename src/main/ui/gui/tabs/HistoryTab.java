@@ -1,11 +1,16 @@
 package ui.gui.tabs;
 
-import java.awt.GridLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.event.ListSelectionEvent;
@@ -16,6 +21,12 @@ import ui.ImageToTextGUI;
 // History tab of Image to Text application GUI
 // Adapted from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemStarters/tree/main/SmartHome
 public class HistoryTab extends Tab {
+    private static final int HISTORY_LIST_WIDTH = (int) (ImageToTextGUI.WIDTH * 0.3);
+    private static final int HISTORY_LIST_HEIGHT = ImageToTextGUI.HEIGHT;
+
+    private static final int BUTTON_WIDTH = (int) (ImageToTextGUI.WIDTH * 0.3);
+    private static final int BUTTON_HEIGHT = (int) (ImageToTextGUI.HEIGHT * 0.15);
+
     private JList<String> historyList;
     private int selectedIndex;
 
@@ -24,21 +35,30 @@ public class HistoryTab extends Tab {
     private JTextArea extractedTextArea;
     private JButton deleteButton;
     private JButton clearButton;
+    private JPanel rightPanel;
+    private JPanel buttonRow;
 
     // REQUIRES: controller holds this tab
     // EFFECTS: creates history tab with historical conversions list and buttons
     public HistoryTab(ImageToTextGUI controller) {
         super(controller);
 
-        setLayout(new GridLayout(2, 2));
+        setLayout(new BoxLayout(this, 0));
 
         selectedIndex = -1;
 
+        rightPanel = new JPanel();
+        rightPanel.setLayout(new BoxLayout(rightPanel, 1));
+
         placeHistoryList();
         add(listScrollPane, 0);
+
         placeConversionText();
         placeDeleteButton();
         placeClearButton();
+        rightPanel.add(buttonRow);
+
+        add(rightPanel);
     }
 
     // MODIFIES: this
@@ -55,6 +75,10 @@ public class HistoryTab extends Tab {
         addSelectionListener();
 
         listScrollPane.setViewportView(historyList);
+
+        listScrollPane.setMaximumSize(new Dimension(HISTORY_LIST_WIDTH, HISTORY_LIST_HEIGHT));
+        listScrollPane.setMinimumSize(new Dimension(HISTORY_LIST_WIDTH, HISTORY_LIST_HEIGHT));
+        listScrollPane.setPreferredSize(new Dimension(HISTORY_LIST_WIDTH, HISTORY_LIST_HEIGHT));
     }
 
     // REQUIRES: this contains the listScrollPane component
@@ -88,11 +112,17 @@ public class HistoryTab extends Tab {
     // MODIFIES: this
     // EFFECTS: creates area that displays selected conversion information
     private void placeConversionText() {
+        JLabel textAreaLabel = new JLabel("Extracted Text:");
         extractedTextPane = new JScrollPane(new JTextArea(10, 10));
         extractedTextArea = new JTextArea("", 10, 10);
         extractedTextArea.setVisible(true);
 
-        add(extractedTextPane);
+        rightPanel.add(textAreaLabel);
+        rightPanel.add(extractedTextPane);
+        textAreaLabel.setAlignmentX(CENTER_ALIGNMENT);
+        textAreaLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 3, 10));
+        extractedTextArea.setEditable(false);
+        extractedTextArea.setBackground(Color.white);
     }
 
     // MODIFIES: this
@@ -110,12 +140,19 @@ public class HistoryTab extends Tab {
                         getController().getHistory().getConversions().remove(selectedIndex);
                         updateHistoryList();
                         validate();
+                        selectedIndex = -1;
                     }
                 }
             }
         });
 
-        add(deleteButton);
+        deleteButton.setMaximumSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+        deleteButton.setMinimumSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+        deleteButton.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+        deleteButton.setAlignmentX(CENTER_ALIGNMENT);
+        deleteButton.setAlignmentY(CENTER_ALIGNMENT);
+
+        buttonRow = formatButtonRow(deleteButton);
     }
 
     // MODIFIES: this
@@ -132,11 +169,18 @@ public class HistoryTab extends Tab {
                     getController().getHistory().clear();
                     updateHistoryList();
                     validate();
+                    selectedIndex = -1;
                 }
             }
         });
 
-        add(clearButton);
+        clearButton.setMaximumSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+        clearButton.setMinimumSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+        clearButton.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+        clearButton.setAlignmentX(CENTER_ALIGNMENT);
+        clearButton.setAlignmentY(CENTER_ALIGNMENT);
+
+        buttonRow.add(clearButton);
     }
 
 }
