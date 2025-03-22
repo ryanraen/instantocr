@@ -29,6 +29,10 @@ Recognizing the limitations of my current skill and knowledge, I will begin with
 
 # Instructions for End User
 
+### To run the application
+- Run ```main()``` in ```ImageToTextGUI.java``` 
+
+### Functionality
 - You can add a conversion instance to the history list by selecting an image from the file path list and clicking the convert button
 - You can extract the plain text gathered from the selected image by copying it from the conversion tab text area
 - You can see the visual render of the chosen image in the conversion tab by selecting it from the file path list
