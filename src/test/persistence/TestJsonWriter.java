@@ -19,7 +19,7 @@ class TestJsonWriter extends TestJson {
     @Test
     void testWriterInvalidFile() {
         try {
-            ConversionHistory history = new ConversionHistory();
+            new ConversionHistory();
             JsonWriter writer = new JsonWriter("./data/test/persistence/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");

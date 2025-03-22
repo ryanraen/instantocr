@@ -26,6 +26,10 @@ public class ImageToTextApp {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
+    public static void main(String[] args) {
+        new ImageToTextApp();
+    }
+
     // EFFECTS: runs the image to text application
     public ImageToTextApp() {
         init();

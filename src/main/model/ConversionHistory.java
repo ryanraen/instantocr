@@ -12,7 +12,7 @@ import persistence.Writable;
 // Represents a list of previous image conversion instances
 // JSON related methods adapted from the CPSC 210 JsonSerializationDemo:
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
-public class ConversionHistory implements Writable{
+public class ConversionHistory implements Writable {
     private List<ImageConversion> conversions;
 
     // EFFECTS: initializes list of previous converions as empty list
