@@ -1,6 +1,7 @@
 package ui.gui.tabs;
 
-import java.awt.GridLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,10 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.event.ListSelectionEvent;
@@ -24,8 +28,14 @@ import ui.ImageToTextGUI;
 // Conversion tab of Image to Text application GUI
 // Adapted from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemStarters/tree/main/SmartHome
 public class ConversionTab extends Tab {
-    private static final int IMAGE_RENDER_WIDTH = (int) (ImageToTextGUI.WIDTH * 0.5);
-    private static final int IMAGE_RENDER_HEIGHT = (int) (ImageToTextGUI.HEIGHT * 0.5);
+    private static final int IMAGE_RENDER_WIDTH = (int) (ImageToTextGUI.WIDTH * 0.6);
+    private static final int IMAGE_RENDER_HEIGHT = (int) (ImageToTextGUI.HEIGHT * 0.4);
+
+    private static final int TEXT_AREA_WIDTH = (int) (ImageToTextGUI.WIDTH * 0.6);
+    private static final int TEXT_AREA_HEIGHT = (int) (ImageToTextGUI.HEIGHT * 0.3);
+
+    private static final int CONVERT_BUTTON_WIDTH = (int) (ImageToTextGUI.WIDTH * 0.3);
+    private static final int CONVERT_BUTTON_HEIGHT = (int) (ImageToTextGUI.HEIGHT * 0.15);
 
     private JList<String> selectionList;
     private int selectedIndex;
@@ -34,6 +44,7 @@ public class ConversionTab extends Tab {
     private JScrollPane extractedTextPane;
     private JTextArea extractedTextArea;
     private JButton convertButton;
+    private JPanel leftPanel;
 
     // REQUIRES: controller holds this tab
     // EFFECTS: constructs a conversion tab for image conversion functionality
@@ -41,7 +52,11 @@ public class ConversionTab extends Tab {
     public ConversionTab(ImageToTextGUI controller) {
         super(controller);
 
-        setLayout(new GridLayout(2, 2));
+        // setLayout(new GridLayout(1, 2));
+        setLayout(new BoxLayout(this, 0));
+
+        leftPanel = new JPanel();
+        leftPanel.setLayout(new BoxLayout(leftPanel, 1));
 
         images = new ArrayList<>();
         for (String path : getController().getSelection()) {
@@ -51,21 +66,53 @@ public class ConversionTab extends Tab {
                 e.printStackTrace();
             }
         }
+
+        imageArea = new JLabel();
+        selectedIndex = -1;
+
+        placeComponents();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: places conversion tab components
+    private void placeComponents() {
         ImageIcon defaultIcon = new ImageIcon();
         try {
             defaultIcon.setImage(ImageIO.read(new File("data\\blank.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        imageArea = new JLabel();
-        selectedIndex = -1;
-
         renderImage(defaultIcon);
-        add(imageArea);
+        leftPanel.add(imageArea);
         placeImageList();
         placeExtractedTextArea();
         placeConvertButton();
+
+        setComponentPref();
+
+        add(leftPanel);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets appropriate layout preferences for components
+    private void setComponentPref() {
+        imageArea.setMaximumSize(new Dimension(IMAGE_RENDER_WIDTH, IMAGE_RENDER_HEIGHT));
+        imageArea.setMinimumSize(new Dimension(IMAGE_RENDER_WIDTH, IMAGE_RENDER_HEIGHT));
+        imageArea.setPreferredSize(new Dimension(IMAGE_RENDER_WIDTH, IMAGE_RENDER_HEIGHT));
+        imageArea.setAlignmentX(CENTER_ALIGNMENT);
+        imageArea.setAlignmentY(CENTER_ALIGNMENT);
+
+        extractedTextPane.setMaximumSize(new Dimension(TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT));
+        extractedTextPane.setMinimumSize(new Dimension(TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT));
+        extractedTextPane.setPreferredSize(new Dimension(TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT));
+        extractedTextPane.setAlignmentX(CENTER_ALIGNMENT);
+        extractedTextPane.setAlignmentY(CENTER_ALIGNMENT);
+
+        convertButton.setMaximumSize(new Dimension(CONVERT_BUTTON_WIDTH, CONVERT_BUTTON_HEIGHT));
+        convertButton.setMinimumSize(new Dimension(CONVERT_BUTTON_WIDTH, CONVERT_BUTTON_HEIGHT));
+        convertButton.setPreferredSize(new Dimension(CONVERT_BUTTON_WIDTH, CONVERT_BUTTON_HEIGHT));
+        convertButton.setAlignmentX(CENTER_ALIGNMENT);
+        convertButton.setAlignmentY(CENTER_ALIGNMENT);
     }
 
     // MODIFIES: this
@@ -121,11 +168,11 @@ public class ConversionTab extends Tab {
     // MODIFIES: this
     // EFFECTS: creates Convert button
     private void placeConvertButton() {
-        String buttonName = "Convert!";
+        String buttonName = "Convert";
         convertButton = new JButton(buttonName);
         convertButton.setSize((int) (WIDTH * 0.5), (int) (HEIGHT * 0.5));
         addConvertButtonListener(buttonName);
-        add(convertButton);
+        leftPanel.add(convertButton);
     }
 
     // MODIFIES: this
@@ -158,11 +205,17 @@ public class ConversionTab extends Tab {
     // MODIFIES: this
     // EFFECTS: creates area that displays extracted text
     private void placeExtractedTextArea() {
+        JLabel textAreaLabel = new JLabel("Extracted Text:");
         extractedTextPane = new JScrollPane(new JTextArea(10, 10));
         extractedTextArea = new JTextArea("", 10, 10);
         extractedTextArea.setVisible(true);
 
-        add(extractedTextPane);
+        leftPanel.add(textAreaLabel);
+        leftPanel.add(extractedTextPane);
+        textAreaLabel.setAlignmentX(CENTER_ALIGNMENT);
+        textAreaLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 3, 10));
+        extractedTextArea.setEditable(false);
+        extractedTextArea.setBackground(Color.white);
     }
 
 }
