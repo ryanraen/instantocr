@@ -44,6 +44,10 @@ public class ImageConversion implements Writable {
         this.extractedText = "";
 
         initTemplates();
+
+        EventLog.getInstance()
+                .logEvent(new Event("Successfully initialized "
+                        + "new image conversion instance with no specified filepath."));
     }
 
     // EFFECTS: initializes filePath with given filePath, and set
@@ -57,6 +61,9 @@ public class ImageConversion implements Writable {
         this.extractedText = "";
 
         initTemplates();
+
+        EventLog.getInstance()
+                .logEvent(new Event("Successfully initialized new image conversion instance for '" + filePath + "'."));
     }
 
     // EFFECTS: initializes filePath with given filePath,
@@ -71,6 +78,10 @@ public class ImageConversion implements Writable {
         this.extractedText = extractedText;
 
         initTemplates();
+
+        EventLog.getInstance()
+                .logEvent(new Event("Successfully initialized new image conversion instance for '" + filePath
+                        + "' with extracted text: '" + extractedText + "'."));
     }
 
     public String getFilePath() {
@@ -105,6 +116,8 @@ public class ImageConversion implements Writable {
         for (File file : files) {
             templates.add(new CharacterTemplate(file.getPath()));
         }
+
+        EventLog.getInstance().logEvent(new Event("Loaded character templates from 'data/templates'."));
     }
 
     // REQUIRES: this image conversion instance must have an existing
@@ -113,6 +126,8 @@ public class ImageConversion implements Writable {
     // EFFECTS: reads the image at filePath and stores it in imageMat
     public void readImage() {
         this.imageMat = Imgcodecs.imread(filePath);
+
+        EventLog.getInstance().logEvent(new Event("Successfully read image file from '" + filePath + "'."));
     }
 
     // REQURES: path must be a valid file path to an image in data/images
@@ -122,6 +137,8 @@ public class ImageConversion implements Writable {
     public void readImage(String path) {
         this.filePath = path;
         this.imageMat = Imgcodecs.imread(path);
+
+        EventLog.getInstance().logEvent(new Event("Successfully read image file from '" + path + "'."));
     }
 
     // REQUIRES: imageMat must be a valid image containing lines
@@ -136,6 +153,8 @@ public class ImageConversion implements Writable {
             resizeImage(image, TEMPLATE_WIDTH, TEMPLATE_HEIGHT);
             this.extractedText += compareWithTemplates(image, templates);
         }
+
+        EventLog.getInstance().logEvent(new Event("Processed image file and successfully extracted text."));
     }
 
     // REQUIRES: imageMat must contain a standard RGB image
@@ -296,6 +315,10 @@ public class ImageConversion implements Writable {
                 maxScoreChar = template.getLabel();
             }
         }
+
+        EventLog.getInstance()
+                .logEvent(new Event("Character '" + maxScoreChar + "' extracted with confidence: " + maxScore + "."));
+
         return maxScoreChar;
     }
 
