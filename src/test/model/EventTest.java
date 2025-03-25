@@ -45,9 +45,10 @@ public class EventTest {
 
         assertFalse(event.equals(date)); // SuppressWarnings used here to test class equivalence
 
-        Event otherEvent = new Event("Sensor open at door");
-        assertTrue(event.equals(otherEvent) && otherEvent.equals(event));
-        assertTrue(event.hashCode() == otherEvent.hashCode());
+        Event firstEvent = new Event("same event");
+        Event otherEvent = new Event("same event");
+        assertTrue(firstEvent.equals(otherEvent) && otherEvent.equals(firstEvent));
+        assertEquals(firstEvent.hashCode(), otherEvent.hashCode());
     }
 
     @Test
