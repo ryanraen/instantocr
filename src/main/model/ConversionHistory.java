@@ -19,15 +19,18 @@ public class ConversionHistory implements Writable {
     public ConversionHistory() {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         this.conversions = new ArrayList<>();
+        EventLog.getInstance().logEvent(new Event("Successfully initialized conversion history."));
     }
 
     public List<ImageConversion> getConversions() {
         return this.conversions;
     }
 
+    // MODIFIES: this
     // EFFECTS: adds the given conversion to the conversion history
     public void addConversion(ImageConversion conversion) {
         this.conversions.add(conversion);
+        EventLog.getInstance().logEvent(new Event("Added conversion instance to history."));
     }
 
     // REQUIRES: index <= size of list conversion history
@@ -51,6 +54,7 @@ public class ConversionHistory implements Writable {
     // EFFECTS: clears conversion history
     public void clear() {
         conversions.clear();
+        EventLog.getInstance().logEvent(new Event("Cleared conversion history."));
     }
 
     // MODIFIES: this
@@ -58,9 +62,12 @@ public class ConversionHistory implements Writable {
     // and returns true; returns false if index > conversions size
     public boolean deleteByIndex(int index) {
         if (index > conversions.size()) {
+            EventLog.getInstance().logEvent(new Event("WARNING: could not delete conversion instance"
+                    + "with index '" + index + "'."));
             return false;
         } else {
             conversions.remove(conversions.size() - index);
+            EventLog.getInstance().logEvent(new Event("Deleted conversion instance from history."));
             return true;
         }
     }
@@ -73,9 +80,12 @@ public class ConversionHistory implements Writable {
         for (int i = 0; i < conversions.size(); i++) {
             if (conversions.get(i).getFilePath().equals(filePath)) {
                 conversions.remove(i);
+                EventLog.getInstance().logEvent(new Event("Deleted conversion instance from history."));
                 return true;
             }
         }
+        EventLog.getInstance().logEvent(new Event("WARNING: could not delete conversion instance"
+                + "with file path '" + filePath + "'."));
         return false;
     }
 
