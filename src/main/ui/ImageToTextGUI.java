@@ -1,8 +1,11 @@
 package ui;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +20,8 @@ import javax.swing.WindowConstants;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
 import model.ConversionHistory;
+import model.Event;
+import model.EventLog;
 import model.ImageConversion;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -61,8 +66,10 @@ public class ImageToTextGUI extends JFrame {
     private ImageToTextGUI() {
         super("Image to Text Converter");
         setSize(WIDTH, HEIGHT);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
+
+        addClosingListener();
 
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -82,6 +89,20 @@ public class ImageToTextGUI extends JFrame {
         add(navBar);
 
         setVisible(true);
+    }
+
+    // EFFECTS: adds window listener to print event logs upon closing the app
+    public void addClosingListener() {
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+                for (Event event : EventLog.getInstance()) {
+                    System.out.println(formatter.format(event.getDate()) + ": " + event.getDescription());
+                }
+                System.exit(0);
+            }
+        });
     }
 
     // EFFECTS: returns the ImageConversion object controlled by this UI
@@ -163,9 +184,8 @@ public class ImageToTextGUI extends JFrame {
             jsonWriter.open();
             jsonWriter.write(history);
             jsonWriter.close();
-            System.out.println("Saved conversion history to " + JSON_STORE + "\n");
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE);
+            // unable to save history
         }
     }
 
@@ -174,9 +194,8 @@ public class ImageToTextGUI extends JFrame {
     private void loadHistory() {
         try {
             history = jsonReader.read();
-            System.out.println("Loaded conversion history from " + JSON_STORE + "\n");
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE);
+            // unable to load history
         }
         HistoryTab historyTab = (HistoryTab) navBar.getComponent(HISTORY_TAB_INDEX);
         historyTab.updateHistoryList();
