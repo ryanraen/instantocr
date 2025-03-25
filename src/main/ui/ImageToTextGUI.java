@@ -91,6 +91,7 @@ public class ImageToTextGUI extends JFrame {
         setVisible(true);
     }
 
+    // MODIFIES: this
     // EFFECTS: adds window listener to print event logs upon closing the app
     public void addClosingListener() {
         addWindowListener(new WindowAdapter() {
