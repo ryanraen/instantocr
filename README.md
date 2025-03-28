@@ -101,3 +101,10 @@ Recognizing the limitations of my current skill and knowledge, I will begin with
 22:11:35: Loaded character templates from 'data/templates'.
 22:11:35: Successfully initialized new image conversion instance with no specified filepath.
 ```
+
+# Phase 4: Task 3
+
+### Reflection:
+One of the issues that I would resolve if I had more time would be applying the appropriate patterns to my GUI classes. Particularly, it was a struggle to work out how to notify separate tabs each time the user performs an action that alters data. My current solution is rather messy and unreliable, involving some unnecessary coupling. After the recent lectures about design patterns, it is clear that the observer pattern can be used to solve this problem by framing the tabs as observers and the GUI object as the subject.
+
+Moreover, I would also refactor the ImageConversion class to try to improve cohesion. For example, many of the image processing methods would be more suitable in an ImageProcessor class. By doing this, the ImageConversion will only have to handle data related to the conversion instance itself. Also, I will create a new class to represent the list of existing character templates. Applying the Singleton design pattern, we can ensure that there is only one instance of the character templates throughout the application.
