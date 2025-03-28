@@ -25,8 +25,8 @@ import model.EventLog;
 import model.ImageConversion;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import ui.gui.tabs.ConversionTab;
-import ui.gui.tabs.HistoryTab;
+import ui.tabs.ConversionTab;
+import ui.tabs.HistoryTab;
 
 // GUI interface for Image to Text conversion application
 // Adapted from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemStarters/tree/main/SmartHome

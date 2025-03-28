@@ -1,4 +1,4 @@
-package ui.gui.tabs;
+package ui.tabs;
 
 import java.awt.Color;
 import java.awt.Dimension;
