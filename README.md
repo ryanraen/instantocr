@@ -2,7 +2,7 @@
 
 ## What does it do?
 
-This application will extract text from images containing plain text using simple *Optical Character Recognition* (OCR) logic. In its full form, users would be able to upload an image and copy the extracted text to use it elsewhere without manually typing it out. Within the confines of CPSC 210 term project restrictions, the user will be able to select a demo image from a set of pre-defined image files within the project data and continue the conversion process with it.
+This application will extract text from images containing plain text using simple *Optical Character Recognition* (OCR) logic. In its full form, users would be able to upload an image and copy the extracted text to use it elsewhere without manually typing it out. Within the limitations of the project timeframe, the user is able to select a demo image from a set of pre-defined image files within the project data and continue the conversion process with it.
 
 ## Who will use it?
 
@@ -38,73 +38,3 @@ Recognizing the limitations of my current skill and knowledge, I will begin with
 - You can see the visual render of the chosen image in the conversion tab by selecting it from the file path list
 - You can save the state of the application by clicking ```File``` in the menu bar and clicking ```Save```
 - You can reload the state of the application by clicking ```File``` in the menu bar and clicking ```Load```
-
-# Phase 4: Task 2
-
-### Example event log:
-```
-22:10:48: Loaded character templates from 'data/templates'.
-22:10:48: Successfully initialized new image conversion instance with no specified filepath.
-22:10:48: Successfully initialized conversion history.
-22:10:52: Successfully read image file from 'data\images\greetings.png'.
-22:10:52: Character 'h' extracted with confidence: 0.7370849847793579.
-22:10:52: Character 'e' extracted with confidence: 0.8055446743965149.
-22:10:52: Character 'l' extracted with confidence: 0.5227122902870178.
-22:10:52: Character 'l' extracted with confidence: 0.522712230682373.
-22:10:52: Character 'o' extracted with confidence: 0.8228448033332825.
-22:10:52: Processed image file and successfully extracted text.
-22:10:52: Added conversion instance to history.
-22:10:52: Loaded character templates from 'data/templates'.
-22:10:52: Successfully initialized new image conversion instance with no specified filepath.
-22:10:58: Successfully read image file from 'data\images\example.png'.
-22:10:58: Character 'e' extracted with confidence: 0.8241224884986877.
-22:10:58: Character 'x' extracted with confidence: 0.8571233749389648.
-22:10:58: Character 'a' extracted with confidence: 0.8568914532661438.
-22:10:58: Character 'm' extracted with confidence: 0.8792242407798767.
-22:10:58: Character 'p' extracted with confidence: 0.7742010951042175.
-22:10:58: Character 'r' extracted with confidence: 0.5558117628097534.
-22:10:58: Character 'e' extracted with confidence: 0.8186091184616089.
-22:10:58: Processed image file and successfully extracted text.
-22:10:58: Added conversion instance to history.
-22:10:58: Loaded character templates from 'data/templates'.
-22:10:58: Successfully initialized new image conversion instance with no specified filepath.
-22:11:10: Successfully read image file from 'data\images\mystery_word.png'.
-22:11:10: Character 'o' extracted with confidence: 0.8021669387817383.
-22:11:10: Character 'r' extracted with confidence: 0.9112370610237122.
-22:11:10: Character 'a' extracted with confidence: 0.8413073420524597.
-22:11:10: Character 'n' extracted with confidence: 0.9153560996055603.
-22:11:10: Character 'g' extracted with confidence: 0.8822821378707886.
-22:11:10: Character 'e' extracted with confidence: 0.8520680069923401.
-22:11:10: Processed image file and successfully extracted text.
-22:11:10: Added conversion instance to history.
-22:11:10: Loaded character templates from 'data/templates'.
-22:11:10: Successfully initialized new image conversion instance with no specified filepath.
-22:11:21: Successfully read image file from 'data\images\banana.png'.
-22:11:21: Character 'b' extracted with confidence: 0.8052780032157898.
-22:11:21: Character 'a' extracted with confidence: 0.7424792051315308.
-22:11:21: Character 'n' extracted with confidence: 0.9217548966407776.
-22:11:21: Character 'a' extracted with confidence: 0.7424792051315308.
-22:11:21: Character 'n' extracted with confidence: 0.9100258946418762.
-22:11:21: Character 'a' extracted with confidence: 0.8243897557258606.
-22:11:21: Processed image file and successfully extracted text.
-22:11:21: Added conversion instance to history.
-22:11:21: Loaded character templates from 'data/templates'.
-22:11:21: Successfully initialized new image conversion instance with no specified filepath.
-22:11:26: Cleared conversion history.
-22:11:35: Successfully read image file from 'data\images\cpsc.png'.
-22:11:35: Character 'c' extracted with confidence: 0.796286940574646.
-22:11:35: Character 'p' extracted with confidence: 0.9057980179786682.
-22:11:35: Character 's' extracted with confidence: 0.8501687049865723.
-22:11:35: Character 'c' extracted with confidence: 0.7205554246902466.
-22:11:35: Processed image file and successfully extracted text.
-22:11:35: Added conversion instance to history.
-22:11:35: Loaded character templates from 'data/templates'.
-22:11:35: Successfully initialized new image conversion instance with no specified filepath.
-```
-
-# Phase 4: Task 3
-
-### Reflection:
-One of the issues that I would resolve if I had more time would be applying the appropriate patterns to my GUI classes. Particularly, it was a struggle to work out how to notify separate tabs each time the user performs an action that alters data. My current solution is rather messy and unreliable, involving some unnecessary coupling. After the recent lectures about design patterns, it is clear that the observer pattern can be used to solve this problem by framing the tabs as observers and the GUI object as the subject.
-
-Moreover, I would also refactor the ImageConversion class to try to improve cohesion. For example, many of the image processing methods would be more suitable in an ImageProcessor class. By doing this, the ImageConversion will only have to handle data related to the conversion instance itself. Also, I will create a new class to represent the list of existing character templates. Applying the Singleton design pattern, we can ensure that there is only one instance of the character templates throughout the application.
