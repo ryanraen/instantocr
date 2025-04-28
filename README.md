@@ -2,7 +2,7 @@
 
 ## What does it do?
 
-This application will extract text from images containing plain text using simple *Optical Character Recognition* (OCR) logic. In its full form, users would be able to upload an image and copy the extracted text to use it elsewhere without manually typing it out. Within the confines of CPSC 210 term project restrictions, the user will be able to select a demo image from a set of pre-defined image files within the project data and continue the conversion process with it.
+This application will extract text from images containing plain text using simple *Optical Character Recognition* (OCR) logic. In its full form, users would be able to upload an image and copy the extracted text to use it elsewhere without manually typing it out. Within the limitations of the project timeframe, the user is able to select a demo image from a set of pre-defined image files within the project data and continue the conversion process with it.
 
 ## Who will use it?
 
