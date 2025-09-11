@@ -1,6 +1,6 @@
-# Image to Text Tool
+# About the Project
 
-A simple desktop application that extracts plain text from images using **Optical Character Recognition (OCR)**. Users can upload or select an image and convert its text into a usable format without manual typing.
+**InstantOCR** is a simple desktop application that extracts plain text from images using **Optical Character Recognition (OCR)**. Users can upload or select an image and convert its text into a usable format without manual typing.
 
 ---
 
